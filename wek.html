@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainbow and Rain</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(to bottom, #87ceeb, #ffffff);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .rainbow {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 40%;
+            border-radius: 50%;
+            background: conic-gradient(
+                red, orange, yellow, green, cyan, blue, violet
+            );
+            mask: radial-gradient(circle, transparent 50%, black 51%);
+            -webkit-mask: radial-gradient(circle, transparent 50%, black 51%);
+        }
+
+        .rain {
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: rgba(0, 0, 255, 0.5);
+            animation: fall 1s linear infinite;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+<center><marquee><h1>THIS iS My page</h1></marquee></center>
+    <div class="rainbow"></div>
+    <script>
+        function createRain() {
+            for (let i = 0; i < 200; i++) {
+                const rainDrop = document.createElement('div');
+                rainDrop.className = 'rain';
+                rainDrop.style.left = Math.random() * 100 + 'vw';
+                rainDrop.style.animationDelay = Math.random() * 1 + 's';
+                rainDrop.style.animationDuration = 0.5 + Math.random() * 1 + 's';
+                document.body.appendChild(rainDrop);
+            }
+        }
+
+        createRain();
+    </script>
+</body>
+</html>
